@@ -1,0 +1,110 @@
+
+/* ★⑥ テーマカラー：LAST SURVIVOR の世界観に合わせる */
+:root {
+  --main-color: #8b0000;   /* ヘッダー・フッター：ダークレッド */
+  --bg-color: #151515;     /* ページの背景：ブラック */
+  --card-color: #292929;   /* タイルとサイドバー：ダークグレー */
+  --text-color: #f5f5f5;   /* 文字：ホワイト */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  line-height: 1.7;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* ===== ヘッダーとフッター ===== */
+.site-header,
+.site-footer {
+  background: var(--main-color);
+  color: #ffffff;
+  text-align: center;
+  padding: 24px 16px;
+}
+.site-header h1 {
+  margin: 0;
+}
+.site-header p {
+  margin: 4px 0 0;
+}
+
+/* ===== 2カラム ===== */
+.container {
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 0 16px;
+  display: flex;
+  gap: 24px;
+}
+main {
+  flex: 7;            /* ★⑦ メインとサイドバーを7：3にする */
+}
+.sidebar {
+  flex: 3;
+}
+
+/* ===== タイル ===== */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);   /* ★⑧ PCでは3列にする */
+  gap: 16px;
+}
+.tile {
+  background: var(--card-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.tile-img,
+.tile img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.tile-body {
+  padding: 8px 12px 12px;
+}
+.tile-body h3 {
+  margin: 0 0 4px;
+  font-size: 1.1em;
+}
+.tile-body p {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+/* ===== サイドバーの箱 ===== */
+.box {
+  background: var(--card-color);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+.box h2 {
+  margin-top: 0;
+  font-size: 1.1em;
+}
+.box dt {
+  font-weight: bold;
+}
+.box dd {
+  margin: 0 0 8px;
+}
+
+/* ===== スマホ（767px 以下） ===== */
+/* ★⑨ スマホではサイドバーを下に移動してタイルを2列にする */
+@media (max-width: 767px) {
+  .container {
+    flex-direction: column;
+  }
+  .tiles {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
